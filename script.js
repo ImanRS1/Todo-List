@@ -34,7 +34,7 @@ function donePressed(event){
     let doneList = document.getElementById("donePart");
     let thisDoneItem = event.target.parentElement;
     thisDoneItem.innerHTML += addRegretButton();
-    thisDoneItem.children[3].remove();
+   // thisDoneItem.children[3].remove();
     doneList.appendChild(thisDoneItem);
 }
 
@@ -60,6 +60,7 @@ function changePressed(event){
             return currentTodoItem.parentElement.firstElementChild.setAttribute("readonly", "readonly");
         }
         currentTodoItem.parentElement.firstElementChild.removeAttribute("id", "alertItem");
+        console.log(currentTodoItem.parentElement.firstElementChild.value);
         return currentTodoItem.parentElement.firstElementChild.setAttribute("readonly", "readonly");
     } 
 }
