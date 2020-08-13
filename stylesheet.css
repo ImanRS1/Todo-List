@@ -1,0 +1,111 @@
+#mainHeader{
+    text-align: center;
+    line-height: 5px;
+    font-family: 'Comic Sans MS', Arial, sans-serif;
+    font-size: 40px;
+}
+
+#content{
+    padding-top: 15px;
+    padding-left: 56px;
+    padding-right: 16px;
+    line-height: 25px;
+    font-family: 'Comic Sans MS', Arial, sans-serif;
+    font-size: 18.5px;
+    letter-spacing: 1px;
+    word-spacing: 5px;
+ 
+}
+
+
+#content ul{
+    margin-right: 20px;
+}
+#content ul li{
+    line-height: 25px;
+}
+
+#todoPart, #donePart{
+    margin-top: 28px;
+}
+
+#initialInput{
+    height: 20px;
+    width: 75.7%;
+}
+
+#todoPart input[type=text], #donePart input[type=text]{
+    border: none;
+    background-color: transparent;
+    font-family: 'Comic Sans MS', Arial, sans-serif;
+    font-size: 15px;
+    width: 290px;
+    float:left;
+
+}
+
+#alertItem{
+    font-weight: bold;
+    color: red;
+}
+
+#pulser{
+    animation-name: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    border: 2px solid black;
+}
+
+@keyframes pulse{
+    0% {
+        background-color: transparent;
+    }
+    50% {
+        background-color: rgb(2, 204, 204);
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+
+#todoPart input[type=button], #donePart input[type=button]{
+    height: 21px;
+    width: 55px;
+    border-radius: 20%;
+    float:right;
+}
+
+#submitButton{
+    float:right;
+    height: 26px;
+    margin-right: 20px;
+    margin-top: 2px;
+    width: 19%;
+}
+
+#paper{
+    width: 600px;
+    height: 700px;
+    margin: 20px auto;
+    background-color: white;
+    box-shadow: 0px 0px 5px 0px #888;
+    position: relative;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+#paper::before{
+    content: '';
+    width: 2px;
+    height: 100%;
+    background-color: rgba(255,0,0,0.6);
+    position: absolute;
+    top: 0;
+    left: 40px;
+}
+
+
+#pattern{    
+    height: 100%;
+    background-image: repeating-linear-gradient(white 0px, white 24px, teal 25px);
+}
