@@ -38,8 +38,6 @@ function donePressed(event){
     thisDoneItem.innerHTML += addRegretButton();
     thisDoneItem.children[3].remove();
     doneList.appendChild(thisDoneItem);
-
-
 }
 
 function regretPressed(event){
