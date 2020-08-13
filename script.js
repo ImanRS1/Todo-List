@@ -50,10 +50,8 @@ function regretPressed(event){
     todoList.appendChild(thisTodoItem);
 }
 
-
 function changePressed(event){
-    let currentTodoItem = event.target;
-    
+    let currentTodoItem = event.target;    
     if(currentTodoItem.parentElement.firstElementChild.hasAttribute("readonly")){
         makeWindowPulse(currentTodoItem);
         return currentTodoItem.parentElement.firstElementChild.removeAttribute("readonly");
@@ -67,7 +65,6 @@ function changePressed(event){
         }
         currentTodoItem.parentElement.firstElementChild.removeAttribute("id", "alertItem");
         return currentTodoItem.parentElement.firstElementChild.setAttribute("readonly", "readonly");
-
     } 
 }
 
