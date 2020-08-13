@@ -14,7 +14,6 @@ initPart.addEventListener('submit', function(e){
 
 function addedTodoItem(theItem){
     return document.getElementById("todoPart").innerHTML += "<li><input type='text' readonly='readonly' value= '" + theItem + "'>" + "</input>" + addChangeButton() + addRemoveButton()  + addDoneButton() +"</li>";
-
 }
 
 function addChangeButton(){
