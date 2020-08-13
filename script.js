@@ -34,7 +34,7 @@ function donePressed(event){
     let doneList = document.getElementById("donePart");
     let thisDoneItem = event.target.parentElement;
     thisDoneItem.innerHTML += addRegretButton();
-   // thisDoneItem.children[3].remove();
+    thisDoneItem.children[3].remove();
     doneList.appendChild(thisDoneItem);
 }
 
@@ -56,11 +56,13 @@ function changePressed(event){
         if(currentTodoItem.parentElement.firstElementChild.value == ""){
             currentTodoItem.parentElement.firstElementChild.setAttribute("id", "alertItem");
             currentTodoItem.parentElement.firstElementChild.value = "Add a task or remove the line";
+            currentTodoItem.parentElement.firstElementChild.setAttribute("value", "Add a task or remove the line");
             alert("You cannot empty the todo task. Fill it in or remove it completely");
             return currentTodoItem.parentElement.firstElementChild.setAttribute("readonly", "readonly");
         }
         currentTodoItem.parentElement.firstElementChild.removeAttribute("id", "alertItem");
-        console.log(currentTodoItem.parentElement.firstElementChild.value);
+        let changedFieldValue = currentTodoItem.parentElement.firstElementChild.value;
+        currentTodoItem.parentElement.firstElementChild.setAttribute("value", changedFieldValue);
         return currentTodoItem.parentElement.firstElementChild.setAttribute("readonly", "readonly");
     } 
 }
