@@ -10,7 +10,6 @@ initPart.addEventListener('submit', function(e){
 
     addedTodoItem(addedInput.value);
     document.getElementById("initialInput").value = "";
-
 });
 
 function addedTodoItem(theItem){
