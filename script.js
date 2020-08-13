@@ -1,18 +1,18 @@
 let initPart = document.getElementById("initPart");
+let doneList = document.getElementById("donePart");
+let todoList = document.getElementById("todoPart");
 
 initPart.addEventListener('submit', function(e){
     e.preventDefault();
     let addedInput = document.getElementById("initialInput");
-
     if(addedInput.value == ""){
         return alert("You cannot add empty to do items.");
     }
-
-    addedTodoItem(addedInput.value);
+    addTodoItem(addedInput.value);
     document.getElementById("initialInput").value = "";
 });
 
-function addedTodoItem(theItem){
+function addTodoItem(theItem){
     return document.getElementById("todoPart").innerHTML += "<li><input type='text' readonly='readonly' value= '" + theItem + "'>" + "</input>" + addChangeButton() + addRemoveButton()  + addDoneButton() +"</li>";
 }
 
@@ -31,7 +31,6 @@ function addRegretButton(){
 
 
 function donePressed(event){
-    let doneList = document.getElementById("donePart");
     let thisDoneItem = event.target.parentElement;
     thisDoneItem.innerHTML += addRegretButton();
     thisDoneItem.children[3].remove();
@@ -39,7 +38,6 @@ function donePressed(event){
 }
 
 function regretPressed(event){
-    let todoList = document.getElementById("todoPart");
     let thisTodoItem = event.target.parentElement;
     thisTodoItem.innerHTML += addDoneButton();
     thisTodoItem.children[3].remove();
@@ -47,36 +45,39 @@ function regretPressed(event){
 }
 
 function changePressed(event){
-    let currentTodoItem = event.target;    
-    if(currentTodoItem.parentElement.firstElementChild.hasAttribute("readonly")){
-        makeWindowPulse(currentTodoItem);
-        return currentTodoItem.parentElement.firstElementChild.removeAttribute("readonly");
+    let currentTodoItem = event.target;
+    let thisChangedItem = currentTodoItem.parentElement.firstElementChild;    
+    if(thisChangedItem.hasAttribute("readonly")){
+        makeWindowPulse(thisChangedItem);
+        return thisChangedItem.removeAttribute("readonly");
     }else{
-        stopWindowPulse(currentTodoItem);
-        if(currentTodoItem.parentElement.firstElementChild.value == ""){
-            currentTodoItem.parentElement.firstElementChild.setAttribute("id", "alertItem");
-            currentTodoItem.parentElement.firstElementChild.value = "Add a task or remove the line";
-            currentTodoItem.parentElement.firstElementChild.setAttribute("value", "Add a task or remove the line");
-            alert("You cannot empty the todo task. Fill it in or remove it completely");
-            return currentTodoItem.parentElement.firstElementChild.setAttribute("readonly", "readonly");
+        stopWindowPulse(thisChangedItem);
+        if(thisChangedItem.value == ""){
+            return emptyInputError(thisChangedItem);
         }
-        currentTodoItem.parentElement.firstElementChild.removeAttribute("id", "alertItem");
-        let changedFieldValue = currentTodoItem.parentElement.firstElementChild.value;
-        currentTodoItem.parentElement.firstElementChild.setAttribute("value", changedFieldValue);
-        return currentTodoItem.parentElement.firstElementChild.setAttribute("readonly", "readonly");
+        thisChangedItem.removeAttribute("id", "alertItem");
+        let changedFieldValue = thisChangedItem.value;
+        thisChangedItem.setAttribute("value", changedFieldValue);
+        return thisChangedItem.setAttribute("readonly", "readonly");
     } 
+}
+
+function emptyInputError(thisChangedItem){
+    thisChangedItem.setAttribute("id", "alertItem");
+    thisChangedItem.value = "Add a task or remove the line";
+    thisChangedItem.setAttribute("value", "Add a task or remove the line");
+    alert("You cannot empty the todo task. Fill it in or remove it completely");
+    return thisChangedItem.setAttribute("readonly", "readonly");
 }
 
 function removePressed(event){    
     event.target.parentElement.remove();
 }
 
-function makeWindowPulse(currentTodoItem){
-    var thisInputField = currentTodoItem.parentElement.firstElementChild;
-    thisInputField.setAttribute("id", "pulser");
+function makeWindowPulse(thisChangedItem){
+    thisChangedItem.setAttribute("id", "pulser");
 }
 
-function stopWindowPulse(currentTodoItem){
-    var thisInputField = currentTodoItem.parentElement.firstElementChild;
-    thisInputField.removeAttribute("id", "pulser");
+function stopWindowPulse(thisChangedItem){
+    thisChangedItem.removeAttribute("id", "pulser");
 }
