@@ -48,10 +48,10 @@ function changePressed(event){
     let currentTodoItem = event.target;
     let thisChangedItem = currentTodoItem.parentElement.firstElementChild;    
     if(thisChangedItem.hasAttribute("readonly")){
-        makeWindowPulse(thisChangedItem);
+        makeInputFieldPulse(thisChangedItem);
         return thisChangedItem.removeAttribute("readonly");
     }else{
-        stopWindowPulse(thisChangedItem);
+        stopInputFieldPulse(thisChangedItem);
         if(thisChangedItem.value == ""){
             return emptyInputError(thisChangedItem);
         }
@@ -74,10 +74,10 @@ function removePressed(event){
     event.target.parentElement.remove();
 }
 
-function makeWindowPulse(thisChangedItem){
+function makeInputFieldPulse(thisChangedItem){
     thisChangedItem.setAttribute("id", "pulser");
 }
 
-function stopWindowPulse(thisChangedItem){
+function stopInputFieldPulse(thisChangedItem){
     thisChangedItem.removeAttribute("id", "pulser");
 }
