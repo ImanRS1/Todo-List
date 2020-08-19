@@ -19,14 +19,21 @@
 #content ul{
     margin-right: 20px;
 }
-#content ul li{
-    line-height: 25px;
+
+#todoHeader{
+    margin-top: 27px;
+}
+#doneHeader{
+    line-height: 19px;
 }
 
-#todoPart, #donePart{
-    margin-top: 28px;
+#todoPart{
+    margin-top: 26.5px;
+    margin-bottom: 25px;
 }
-
+#donePart{
+    margin-top: 31px;
+} 
 #initialInput{
     height: 20px;
     width: 75.7%;
