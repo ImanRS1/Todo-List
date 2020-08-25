@@ -9,7 +9,7 @@ initPart.addEventListener('submit', function(e){
         return alert("You cannot add empty to do items.");
     }
     addTodoItem(addedInput.value);
-    document.getElementById("initialInput").value = "";
+    addedInput.value = "";
 });
 
 function addTodoItem(theItem){
@@ -45,19 +45,20 @@ function regretPressed(event){
 }
 
 function changePressed(event){
-    let currentTodoItem = event.target;
-    let thisChangedItem = currentTodoItem.parentElement.firstElementChild;    
+    let thisChangedItem = event.target.parentElement.firstElementChild;    
     if(thisChangedItem.hasAttribute("readonly")){
         makeInputFieldPulse(thisChangedItem);
+        event.target.value = "Save";
         return thisChangedItem.removeAttribute("readonly");
     }else{
         stopInputFieldPulse(thisChangedItem);
         if(thisChangedItem.value == ""){
+            event.target.value = "Edit"
             return emptyInputError(thisChangedItem);
         }
         thisChangedItem.removeAttribute("id", "alertItem");
-        let changedFieldValue = thisChangedItem.value;
-        thisChangedItem.setAttribute("value", changedFieldValue);
+        thisChangedItem.setAttribute("value", thisChangedItem.value);
+        event.target.value = "Edit"
         return thisChangedItem.setAttribute("readonly", "readonly");
     } 
 }
